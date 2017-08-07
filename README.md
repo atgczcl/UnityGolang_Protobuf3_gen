@@ -1,52 +1,13 @@
+以windows为例，工具代码全是python的，可以自己写对应平台批处理来支持其他平台。
+1.python的安装
+windows
+自己安装python3，去官网自己下载。然后找到安装路径里面的python.exe，复制出来一个改名叫python3.exe。
+如果你安装过python2，出现冲突。说明你是老司机，自行解决。
+mac & linux 如果不自带python3 自行安装
+2第三方库的安装
+(理论上讲命令行直接拷贝就行的，真的报错自己谷歌搜吧，环境变量找不到pip之类的错误很简单。)
+pip install xlrd // 读取excel用
 
-# UnitySocketPtotobuf3Demo
-提供一套基础的游戏框架。这套框架不准备支持大型MMORPG。
-主要给中小型团队或者个人开发者提供了基础的框架。可以很快速的开发卡牌，棋牌等开房间，进副本战斗的游戏。
-
-用到的开发语言
-
-1,golang开发服务器。
-
-2,C#开发客户端，用unity。
-
-3,python3 开发工具。
-
-用到的框架
-
-https://github.com/caolaoyao/Chat，
-
-https://github.com/name5566/leaf
-
-表示感谢。如有侵权请及时联系。
-
-主要功能:
-
-1.实现了做手游基础网络通讯。一套.proto配置，一键自动生成服务器客户端消息，两边id自动保证一致，上层调用只管new 出消息类交给网络层，收消息注册用消息类名来注册，屏蔽掉了底层id的转换过程。
-
-2.消息工具已经完成。
-
-3.配表工具基础功能已经完成。一键自动把excel文件拆开成服务器配置和客户端配置，并且生成两边配表代码，游戏启动时候自动加载并且解析配置数据。
-
-4.db可以用gorm，很方便。
-gorm多说几句，本来想用gorm自动级联跨表查询和保存，结果发现各种问题各种不习惯，最后还是决定，只用orm做基础的结构体和db table的映射，复合结构还是自己写函数处理下比较和自己习惯。
-
-有个demo文件在UnitySocketProtobuf3Demo\Server\src\server\testgorm.go 实现基本的代码类自动生成数据结构，程序方便用的查询接口，保存和替换数据等。
-
-
-消息批处理在这里UnitySocketProtobuf3Demo\Tools\GenProto.bat
-
-消息配置文件在这里UnitySocketProtobuf3Demo\Tools\Proto\src\*
-
-配表批处理在这里UnitySocketProtobuf3Demo\Tools\GenTableData.bat
-
-配表文件在这里UnitySocketProtobuf3Demo\Tools\TableData\*
-
-消息工具和配表工具，安装说明在这里UnitySocketProtobuf3Demo/Tools/工具安装说明.txt
-
-用到的几个软件
-
-1.Unity2017。
-
-2.Protobuf3。
-
-
+3使用。
+GenProto.bat，生成两端消息文件和对应的id管理类
+GenTableData.bat，生成两端配表和初始化统一接口。
